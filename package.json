@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config config/webpack.dev.config.js --mode development --open --inline",
-    "build": "webpack --config config/webpack.pro.config.js --mode production",
-    "dll": "webpack --config config/webpack.dll.config.js --mode production",
+    "start": "webpack-dev-server --config build/webpack.dev.config.js --mode development --open --inline",
+    "build": "webpack --config build/webpack.pro.config.js --mode production",
+    "dll": "webpack --config build/webpack.dll.config.js --mode production",
     "lint": "eslint --ext .tsx --ext .ts src/"
   },
   "author": "",
