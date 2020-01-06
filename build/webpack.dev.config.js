@@ -2,7 +2,7 @@ const path = require('path');
 const baseConfig = require('./webpack.base.config');
 const {HotModuleReplacementPlugin} = require('webpack');
 const webpackMerge = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ErrorOverlayWebpackPlugin = require('error-overlay-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
@@ -10,7 +10,8 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 
 const devConfig = {
     mode: "development",
-    devtool: "cheap-module-eval-source-map",
+    devtool: "source-map",
+    // devtool: "cheap-module-eval-source-map",
     devServer: {
         host: 'localhost',
         port: 3000,

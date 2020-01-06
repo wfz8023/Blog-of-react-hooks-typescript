@@ -1,27 +1,45 @@
 import React, {useEffect} from "react";
-import styles from "./app.scss";
-import logo from "./assets/images/logo192.png";
-import newUser from "./assets/images/newUser.jpg";
+import {connect} from "react-redux";
+import {bindActionCreators} from 'redux';
+import {setPageTitle} from './store/actions/actionCreators';
+// import {withRouter} from "react-router";
+import styles from './app.scss';
 
 interface IAppProps {
-
+    title: string,
+    setPageTitle: Function
 }
 
-const App: React.FC<IAppProps> = props => {
+const App: React.FC<IAppProps> = (props:IAppProps) => {
+    const {title, setPageTitle} = props;
     useEffect(()=>{
-        console.log(props);
-        document.title = "App";
-    },[props]);
+        // eslint-disable-next-line react/prop-types
+        document.title = title;
+        // eslint-disable-next-line react/prop-types
+    },[title]);
+
     return(
         <div className={styles.a}>
-            你好，HELLOsdfsdfsddfssdfsdffsdfsd
-            <img src={logo} alt="你瞅啥"/>
-            <img src={newUser} alt="还瞅"/>
-            <section>
-
+            <section onClick={()=>setPageTitle('66666')}>
+                {title}
             </section>
+            <footer>
+                <div>
+                    <i/>
+                    <span></span>
+                </div>
+            </footer>
         </div>
     );
 };
 
-export default App;
+
+function mapStateToProps(state: any) {
+    return ({title: state.title});
+}
+function mapDispatchToProps(dispatch: any) {
+    return {
+        setPageTitle: bindActionCreators(setPageTitle, dispatch)
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
